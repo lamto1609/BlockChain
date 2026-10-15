@@ -1,0 +1,15 @@
+# DỊCH VỤ systemd: node tự chạy khi máy ảo bật, tự chạy lại nếu bị lỗi.
+# Chép vào /etc/systemd/system/vb-node.service rồi: sudo systemctl enable --now vb-node
+# Xem log: journalctl -u vb-node -f
+[Unit]
+Description=Node blockchain van bang
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/node /opt/vb/server/node.js /opt/vb/data/node
+WorkingDirectory=/opt/vb
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
