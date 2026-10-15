@@ -1,0 +1,53 @@
+/* Màu dùng chung: đổi ở đây là đổi cả trang */
+:root {
+--blue: #1f5fbf;
+--green: #1a7f37;
+--green-bg: #e7f5ec;
+--red: #c62828;
+--red-bg: #fdecec;
+--orange: #9a6200;
+--orange-bg: #fff4dc;
+--gray: #6b7686;
+--line: #dde2e8;
+}
+body {
+margin: 0;
+font-family: "Segoe UI", Arial, sans-serif;
+background: #f6f7f9;
+color: #1c2430;
+}
+header { background: #fff; border-bottom: 1px solid var(--line); padding: 12px 16px 0; }
+h1 { font-size: 22px; margin: 0 0 10px; }
+h2 { font-size: 17px; margin: 0 0 10px; }
+main { padding: 16px; max-width: 1300px; margin: 0 auto; }
+/* Thanh tab */
+nav { display: flex; flex-wrap: wrap; gap: 4px; }
+nav button { background: none; color: var(--gray); border: 0; border-bottom: 3px solid transparent; border-radius: 0; }
+nav button.active { color: var(--blue); border-bottom-color: var(--blue); }
+/* Nút, ô nhập */
+button { font: inherit; font-weight: 600; padding: 8px 14px; border: 1px solid var(--blue); border-radius: 6px; background: var(--blue); color: #fff; cursor: pointer; }
+button.danger { background: #fff; color: var(--red); border-color: var(--red); }
+input, select { font: inherit; padding: 7px 9px; border: 1px solid var(--line); border-radius: 6px; }
+label { display: flex; flex-direction: column; gap: 4px; color: var(--gray); font-size: 14px; }
+/* Khung, thẻ */
+.box, .card { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 14px; }
+.box { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 0 0 16px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.card { display: flex; flex-direction: column; gap: 10px; }
+.hint { color: var(--gray); font-size: 14px; }
+/* Kết quả: xanh = hợp lệ, đỏ = không tìm thấy / lỗi, cam = đã thu hồi */
+.ok, .bad, .warn { padding: 10px 14px; border-radius: 8px; border: 1px solid; }
+.ok { background: var(--green-bg); border-color: var(--green); color: var(--green); }
+.bad { background: var(--red-bg); border-color: var(--red); color: var(--red); }
+.warn { background: var(--orange-bg); border-color: var(--orange); color: var(--orange); }
+.ok b, .bad b, .warn b { font-size: 18px; }
+table { width: 100%; border-collapse: collapse; background: #fff; }
+th, td { text-align: left; padding: 10px; border-bottom: 1px solid var(--line); }
+/* Block Explorer: mỗi node một cột */
+.nodes { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+.node { background: #fff; border: 2px solid var(--green); border-radius: 10px; padding: 12px; }
+.node.invalid { border-color: var(--red); background: var(--red-bg); }
+.node.offline { border-color: var(--line); opacity: .6; }
+.node h3 { margin: 0 0 6px; font-size: 16px; }
+.block { border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; margin-top: 6px; background: #fff; font-size: 13px; }
+.mono { font-family: Consolas, monospace; font-size: 12px; color: var(--gray); word-break: break-all; }

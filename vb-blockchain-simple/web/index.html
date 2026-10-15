@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Xác thực văn bằng</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+<h1>Xác thực văn bằng trên Blockchain</h1>
+<nav>
+<button data-tab="school" class="active">Trường</button>
+<button data-tab="student">Người học</button>
+<button data-tab="verify">Xác minh</button>
+<button data-tab="admin">Admin</button>
+<button data-tab="explorer">Block Explorer</button>
+</nav>
+</header>
+<main>
+<!-- TAB TRƯỜNG: cấp và thu hồi văn bằng -->
+<section id="school">
+<p class="box">Bạn là trường:
+<select id="schoolNode"></select>
+<span id="schoolInfo"></span>
+</p>
+<div class="cards">
+<form id="issueForm" class="card">
+<h2>Cấp văn bằng</h2>
+<label>Mã văn bằng (in sẵn trên PDF) <input name="certId" value="VB2026-001" required></label>
+<label>Mã sinh viên <input name="studentId" value="SV001" required></label>
+<label>File PDF văn bằng <input name="pdf" type="file" accept=".pdf" required></label>
+<button>Cấp văn bằng</button>
+</form>
+<form id="revokeForm" class="card">
+<h2>Thu hồi văn bằng</h2>
+<label>Mã văn bằng <input name="certId" value="VB2026-001" required></label>
+<label>Lý do <input name="reason" value="Phát hiện gian lận thi cử" required></label>
+<button class="danger">Thu hồi</button>
+</form>
+</div>
+<p id="schoolMsg"></p>
+<p class="hint">PDF mẫu để thử: <a href="samples/VB2026-001.pdf">VB2026-001.pdf</a> ·
+<a href="samples/VB2026-001-da-sua.pdf">VB2026-001-da-sua.pdf</a> (sửa 1 ký tự) ·
+<a href="samples/VB2026-002.pdf">VB2026-002.pdf</a> · <a href="samples/GHOST-001.pdf">GHOST-001.pdf</a></p>
+</section>
+<!-- TAB NGƯỜI HỌC: xem văn bằng của mình, tạo link + QR chia sẻ -->
+<section id="student" hidden>
+<form id="studentForm" class="box">
+<label>Mã sinh viên <input name="studentId" value="SV001" required></label>
+<button>Xem văn bằng của tôi</button>
+</form>
+<div id="studentList"></div>
+<div id="share" class="card" hidden></div>
+</section>
+<!-- TAB XÁC MINH: nhà tuyển dụng tải PDF hoặc nhập mã văn bằng -->
+<section id="verify" hidden>
+<div class="cards">
+<div class="card">
+<h2>Xác minh bằng file PDF</h2>
+<input id="verifyFile" type="file" accept=".pdf">
+<div id="verifyPdfResult"></div>
+</div>
+<form id="lookupForm" class="card">
+<h2>Tra cứu theo mã văn bằng</h2>
+<label>Mã văn bằng <input name="certId" required></label>
+<button>Tra cứu</button>
+<div id="lookupResult"></div>
+</form>
+</div>
+</section>
+<!-- TAB ADMIN: Bộ GD&ĐT cấp/gỡ quyền phát hành -->
+<section id="admin" hidden>
+<p class="box">Gửi từ node: <select id="adminNode"></select>
+(chỉ node 1 — máy của Bộ GD&amp;ĐT — giữ khóa Admin)</p>
+<table>
+<thead><tr><th>Trường</th><th>Quyền phát hành</th><th></th></tr></thead>
+<tbody id="adminTable"></tbody>
+</table>
+<p id="adminMsg"></p>
+</section>
+<!-- TAB BLOCK EXPLORER: chain của từng node -->
+<section id="explorer" hidden>
+<div id="nodes" class="nodes"></div>
+</section>
+</main>
+<script src="config.js"></script>
+<script src="vendor/qrcode.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
