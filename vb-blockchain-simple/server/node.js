@@ -35,7 +35,12 @@ const tip = () => chain[chain.length - 1];
 
 // Ai đó sửa tay chain.json khi node đang chạy (kịch bản 5) → đọc lại và kiểm tra ngay
 fs.watchFile(chainFile, { interval: 1000 }, () => {
-  const text = fs.readFileSync(chainFile, 'utf8');
+  let text;
+  try { text = fs.readFileSync(chainFile, 'utf8'); }
+  catch { // file bị xóa → đặt lại chain rỗng, sync() sẽ kéo bản đầy đủ từ node khác về
+    console.log('chain.json bị xóa → khôi phục từ các node khác');
+    chain = [genesis]; refresh(); save(); return;
+  }
   if (text === JSON.stringify(chain, null, 2)) return; // chính node vừa ghi file
   try { chain = JSON.parse(text); } catch { return; } // đang lưu dở, lần sau đọc lại
   console.log('chain.json vừa bị sửa tay → kiểm tra lại chain');
