@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bộ GD&amp;ĐT — Xác thực văn bằng</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bo">
+  <header class="bar">
+    <a href="index.html">← Trang chủ</a>
+    <h1>Bộ Giáo dục và Đào tạo</h1>
+    <span class="who" id="nodeInfo"></span>
+  </header>
+  <main>
+    <p class="box">Bộ quyết định trường nào được cấp văn bằng. Mỗi lần cấp hoặc gỡ quyền được ký bằng khóa của Bộ
+      (khóa công khai nằm sẵn trong block đầu tiên, mọi trường đều kiểm tra được). Thay đổi có hiệu lực sau khi block được tạo (~5 giây).</p>
+    <table>
+      <thead><tr><th>Trường</th><th>Quyền cấp văn bằng</th><th></th></tr></thead>
+      <tbody id="table"></tbody>
+    </table>
+    <p id="msg"></p>
+  </main>
+  <script src="config.js"></script>
+  <script src="common.js"></script>
+  <script src="bo.js"></script>
+</body>
+</html>

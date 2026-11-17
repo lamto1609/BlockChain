@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nhà tuyển dụng — Xác thực văn bằng</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="ntd">
+  <header class="bar">
+    <a href="index.html">← Trang chủ</a>
+    <h1>Nhà tuyển dụng — Xác minh văn bằng</h1>
+    <span class="who">Đọc từ node đang mở trang này</span>
+  </header>
+  <main>
+    <p id="shared" class="box" hidden></p>
+    <div class="cards">
+      <div class="card">
+        <h2>Xác minh bằng file PDF</h2>
+        <input id="pdf" type="file" accept=".pdf">
+        <div id="pdfResult"></div>
+      </div>
+      <form id="lookupForm" class="card">
+        <h2>Tra cứu theo mã văn bằng</h2>
+        <label>Mã văn bằng <input name="certId" required></label>
+        <button>Tra cứu</button>
+        <div id="lookupResult"></div>
+      </form>
+    </div>
+    <p class="hint">Tra theo mã chỉ cho biết trạng thái. Muốn chắc file không bị sửa, hãy xác minh bằng chính file PDF ứng viên gửi.</p>
+  </main>
+  <script src="config.js"></script>
+  <script src="common.js"></script>
+  <script src="tuyen-dung.js"></script>
+</body>
+</html>

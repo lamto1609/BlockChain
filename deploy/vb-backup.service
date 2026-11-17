@@ -1,0 +1,15 @@
+# DỊCH VỤ systemd cho NODE BACKUP trên VPS (chạy bằng tài khoản riêng vbbackup, không phải root).
+# Chép vào /etc/systemd/system/vb-backup.service rồi: systemctl enable --now vb-backup
+# Xem log: journalctl -u vb-backup -f
+[Unit]
+Description=Node backup blockchain van bang
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/node /opt/vb-backup/server/node.js /opt/vb-backup/data/node
+WorkingDirectory=/opt/vb-backup
+Restart=always
+User=vbbackup
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sinh viên — Xác thực văn bằng</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="sv">
+  <header class="bar">
+    <a href="index.html">← Trang chủ</a>
+    <h1>Sinh viên</h1>
+    <span class="who">Đọc từ node đang mở trang này</span>
+  </header>
+  <main>
+    <form id="lookupForm" class="box">
+      <label>Mã sinh viên <input name="studentId" value="SV001" required></label>
+      <button>Xem văn bằng của tôi</button>
+    </form>
+    <div id="list"></div>
+    <div id="share" class="card" hidden></div>
+  </main>
+  <script src="config.js"></script>
+  <script src="common.js"></script>
+  <script src="vendor/qrcode.js"></script>
+  <script src="sinh-vien.js"></script>
+</body>
+</html>

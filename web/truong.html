@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trường đại học — Xác thực văn bằng</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="truong">
+  <header class="bar">
+    <a href="index.html">← Trang chủ</a>
+    <h1 id="title">Trường đại học</h1>
+    <span class="who" id="nodeInfo"></span>
+  </header>
+  <!-- Chưa chọn trường: chỉ hiện danh sách trường. Chọn xong, trang khóa vào đúng node của trường đó (?truong=1|2|3). -->
+  <main id="choose" hidden>
+    <h2>Bạn là trường nào?</h2>
+    <div class="roles" id="schoolLinks"></div>
+  </main>
+  <main id="page" hidden>
+    <div class="cards">
+      <form id="issueForm" class="card">
+        <h2>Cấp văn bằng</h2>
+        <label>Mã văn bằng (in sẵn trên PDF) <input name="certId" value="VB2026-001" required></label>
+        <label>Mã sinh viên <input name="studentId" value="SV001" required></label>
+        <label>File PDF văn bằng <input name="pdf" type="file" accept=".pdf" required></label>
+        <button>Cấp văn bằng</button>
+      </form>
+      <form id="revokeForm" class="card">
+        <h2>Yêu cầu thu hồi văn bằng</h2>
+        <label>Mã văn bằng <input name="certId" value="VB2026-001" required></label>
+        <label>Lý do <input name="reason" value="Phát hiện gian lận thi cử" required></label>
+        <label>Bằng chứng (PDF hoặc ảnh: biên bản, quyết định…) <input name="evidence" type="file" accept=".pdf,.png,.jpg,.jpeg" required></label>
+        <button class="danger">Gửi yêu cầu thu hồi</button>
+        <p class="hint">Văn bằng chỉ bị thu hồi khi đủ đa số trường trong mạng chấp nhận (2/3). Bằng chứng lưu tại máy của trường; chain giữ mã hash của file để không ai sửa lén được.</p>
+      </form>
+    </div>
+    <p id="msg"></p>
+    <h2>Yêu cầu thu hồi chờ duyệt</h2>
+    <div id="requests"><p class="hint">Đang tải…</p></div>
+    <h2>Văn bằng trường đã cấp</h2>
+    <div id="issued"><p class="hint">Đang tải…</p></div>
+    <p class="hint">PDF mẫu để thử: <a href="samples/VB2026-001.pdf">VB2026-001.pdf</a> ·
+      <a href="samples/VB2026-001-da-sua.pdf">VB2026-001-da-sua.pdf</a> (sửa 1 ký tự) ·
+      <a href="samples/VB2026-002.pdf">VB2026-002.pdf</a> · <a href="samples/GHOST-001.pdf">GHOST-001.pdf</a> ·
+      bằng chứng mẫu: <a href="samples/bien-ban-gian-lan.pdf">bien-ban-gian-lan.pdf</a></p>
+  </main>
+  <script src="config.js"></script>
+  <script src="common.js"></script>
+  <script src="truong.js"></script>
+</body>
+</html>

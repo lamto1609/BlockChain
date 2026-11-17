@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Sơ đồ</title>
+<!-- Các sơ đồ của tài liệu. Sửa chữ/toạ độ trong file này rồi chụp lại thành PNG. -->
+<style>
+  body { margin: 0; padding: 20px; background: #fff; font-family: "Segoe UI", Arial, sans-serif; }
+  svg { display: block; margin-bottom: 40px; background: #fff; }
+  .box { fill: #fff; stroke: #1c2430; stroke-width: 1.5; }
+  .host { fill: #f3f5f8; stroke: #6b7686; stroke-width: 1.5; }
+  .gw { fill: #e8eefb; stroke: #1f5fbf; stroke-width: 2; }
+  .school { fill: #e7f5ec; stroke: #1a7f37; stroke-width: 2; }
+  .reader { fill: #fff4dc; stroke: #9a6200; stroke-width: 2; stroke-dasharray: 6 4; }
+  .bad { fill: #fdecec; stroke: #c62828; stroke-width: 2; }
+  .net { stroke: #1f5fbf; stroke-width: 4; }
+  .line { stroke: #1c2430; stroke-width: 1.5; fill: none; }
+  .dash { stroke: #9a6200; stroke-width: 1.5; fill: none; stroke-dasharray: 6 4; }
+  .sync { stroke: #1a7f37; stroke-width: 1.5; fill: none; }
+  .red { stroke: #c62828; stroke-width: 2; fill: none; }
+  text { font-size: 14px; fill: #1c2430; }
+  .t { font-size: 17px; font-weight: 700; }
+  .b { font-weight: 700; }
+  .s { font-size: 12px; fill: #4a5563; }
+  .m { font-family: Consolas, monospace; font-size: 12px; }
+  .c { text-anchor: middle; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1c2430"/></marker>
+    <marker id="arrG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1a7f37"/></marker>
+    <marker id="arrO" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9a6200"/></marker>
+    <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c62828"/></marker>
+  </defs>
+</svg>
+
+<!-- HÌNH 1: KIẾN TRÚC -->
+<svg id="h2-kien-truc" width="1000" height="470">
+  <text x="500" y="26" class="t c">Hình 1. Kiến trúc: một máy, mỗi node một cổng</text>
+  <rect x="20" y="45" width="960" height="70" rx="10" class="box"/>
+  <text x="500" y="72" class="b c">Trình duyệt (HTML + CSS + JS)</text>
+  <text x="500" y="94" class="c s">Bộ GD&amp;ĐT · Trường · Sinh viên · Nhà tuyển dụng · Explorer</text>
+  <g transform="translate(20,230)">
+    <rect width="200" height="120" rx="10" class="school"/>
+    <text x="100" y="28" class="b c">Node 1 · ĐH A</text>
+    <text x="100" y="52" class="c s">tạo block khi tới lượt</text>
+    <text x="100" y="72" class="c s">giữ khóa Admin</text>
+    <text x="100" y="104" class="m c">localhost:3001</text>
+  </g>
+  <g transform="translate(260,230)">
+    <rect width="200" height="120" rx="10" class="school"/>
+    <text x="100" y="28" class="b c">Node 2 · ĐH B</text>
+    <text x="100" y="52" class="c s">tạo block khi tới lượt</text>
+    <text x="100" y="104" class="m c">localhost:3002</text>
+  </g>
+  <g transform="translate(500,230)">
+    <rect width="200" height="120" rx="10" class="school"/>
+    <text x="100" y="28" class="b c">Node 3 · ĐH C</text>
+    <text x="100" y="52" class="c s">tạo block khi tới lượt</text>
+    <text x="100" y="104" class="m c">localhost:3003</text>
+  </g>
+  <g transform="translate(780,230)">
+    <rect width="200" height="120" rx="10" class="reader"/>
+    <text x="100" y="28" class="b c">Node backup</text>
+    <text x="100" y="52" class="c s">không khóa, giữ bản sao</text>
+    <text x="100" y="72" class="c s">có thể đặt trên VPS</text>
+    <text x="100" y="104" class="m c">localhost:3100</text>
+  </g>
+  <path d="M120,115 L120,230" class="line" marker-end="url(#arr)"/><text x="130" y="170" class="s">Bộ, Trường A</text>
+  <path d="M360,115 L360,230" class="line" marker-end="url(#arr)"/><text x="370" y="170" class="s">Trường B</text>
+  <path d="M600,115 L600,230" class="line" marker-end="url(#arr)"/><text x="610" y="170" class="s">Trường C</text>
+  <path d="M880,115 L880,230" class="dash" marker-end="url(#arrO)"/><text x="890" y="162" class="s">đọc, khi các</text><text x="890" y="178" class="s">trường tắt</text>
+  <path d="M220,290 L260,290" class="sync" marker-start="url(#arrG)" marker-end="url(#arrG)"/>
+  <path d="M460,290 L500,290" class="sync" marker-start="url(#arrG)" marker-end="url(#arrG)"/>
+  <path d="M700,290 L780,290" class="dash" marker-end="url(#arrO)"/>
+  <path d="M120,350 C120,400 600,400 600,350" class="sync" marker-start="url(#arrG)" marker-end="url(#arrG)"/>
+  <text x="500" y="430" class="c s">Đồng bộ qua HTTP: block mới → POST /blocks sang các node; mỗi 3 giây GET /chain lấy chain dài nhất hợp lệ.</text>
+  <text x="500" y="450" class="c s">Các trường tự gửi block và đẩy chain lên node backup. Sinh viên và nhà tuyển dụng đọc từ node đang mở trang.</text>
+</svg>
+
+<!-- HÌNH 3: CHUỖI BLOCK -->
+<svg id="h3-chuoi-block" width="1000" height="360">
+  <text x="500" y="26" class="t c">Hình 2. Mỗi block giữ hash của block trước</text>
+  <g transform="translate(20,50)">
+    <rect width="290" height="220" rx="10" class="school"/>
+    <text x="15" y="28" class="b">Block #1</text>
+    <text x="15" y="56" class="m">prevHash: 9c41…(hash #0)</text>
+    <text x="15" y="80" class="m">giao dịch: ADD_ISSUER ĐH A</text>
+    <text x="15" y="104" class="m">merkleRoot: 3d7e…</text>
+    <text x="15" y="128" class="m">validator: khóa ĐH B (đúng lượt)</text>
+    <text x="15" y="152" class="m">chữ ký của ĐH B</text>
+    <rect x="10" y="170" width="270" height="36" rx="6" class="gw"/>
+    <text x="20" y="193" class="m b">hash: a1f0…</text>
+  </g>
+  <g transform="translate(355,50)">
+    <rect width="290" height="220" rx="10" class="bad"/>
+    <text x="15" y="28" class="b">Block #2 (bị sửa)</text>
+    <text x="15" y="56" class="m">prevHash: a1f0…</text>
+    <text x="15" y="80" class="m">ISSUE VB2026-001 docHash: <tspan fill="#c62828" font-weight="700">0000…(giả)</tspan></text>
+    <text x="15" y="104" class="m">merkleRoot: 88f2… <tspan fill="#c62828">≠ tính lại</tspan></text>
+    <text x="15" y="128" class="m">validator: khóa ĐH C</text>
+    <text x="15" y="152" class="m">chữ ký của ĐH C</text>
+    <rect x="10" y="170" width="270" height="36" rx="6" class="gw"/>
+    <text x="20" y="193" class="m b">hash: 5be3…</text>
+  </g>
+  <g transform="translate(690,50)">
+    <rect width="290" height="220" rx="10" class="school"/>
+    <text x="15" y="28" class="b">Block #3</text>
+    <text x="15" y="56" class="m">prevHash: 5be3…</text>
+    <text x="15" y="80" class="m">REVOKE_REQUEST VB2026-001</text>
+    <text x="15" y="104" class="m">merkleRoot: 7a10…</text>
+    <text x="15" y="128" class="m">validator: khóa ĐH A</text>
+    <text x="15" y="152" class="m">chữ ký của ĐH A</text>
+    <rect x="10" y="170" width="270" height="36" rx="6" class="gw"/>
+    <text x="20" y="193" class="m b">hash: e0c9…</text>
+  </g>
+  <path d="M300,243 C330,243 330,107 370,107" class="line" marker-end="url(#arr)"/>
+  <path d="M635,243 C665,243 665,107 705,107" class="line" marker-end="url(#arr)"/>
+  <text x="500" y="300" class="c">Sửa 1 ký tự trong giao dịch của block #2 → Merkle root tính lại không khớp → chain bị đánh dấu KHÔNG hợp lệ.</text>
+  <text x="500" y="324" class="c">Kẻ sửa có tính lại Merkle root và hash thì chữ ký của ĐH C không còn khớp, và prevHash của #3 cũng lệch → vẫn bị phát hiện.</text>
+</svg>
+
+<!-- HÌNH 7: LUỒNG CẤP VĂN BẰNG (sơ đồ tuần tự) -->
+<svg id="h7-luong-cap" width="1000" height="600">
+  <text x="500" y="26" class="t c">Hình 3. Luồng cấp văn bằng (ghi)</text>
+  <!-- các cột: trình duyệt, node 1..3, backup -->
+  <g class="b c">
+    <rect x="30" y="45" width="120" height="40" rx="8" class="box"/><text x="90" y="70">Trình duyệt</text>
+        <rect x="360" y="45" width="120" height="40" rx="8" class="school"/><text x="420" y="70">Node 1 · ĐH A</text>
+    <rect x="530" y="45" width="120" height="40" rx="8" class="school"/><text x="590" y="70">Node 2 · ĐH B</text>
+    <rect x="700" y="45" width="120" height="40" rx="8" class="school"/><text x="760" y="70">Node 3 · ĐH C</text>
+    <rect x="860" y="45" width="120" height="40" rx="8" class="reader"/><text x="920" y="70">Backup VPS</text>
+  </g>
+  <g stroke="#b8c2ce" stroke-dasharray="4 4">
+    <line x1="90" y1="85" x2="90" y2="585"/>
+    <line x1="420" y1="85" x2="420" y2="585"/><line x1="590" y1="85" x2="590" y2="585"/>
+    <line x1="760" y1="85" x2="760" y2="585"/><line x1="920" y1="85" x2="920" y2="585"/>
+  </g>
+  <!-- 1-2: gửi yêu cầu -->
+  <path d="M90,125 L420,125" class="line" marker-end="url(#arr)"/><text x="98" y="118" class="s">① POST localhost:3001/certificates (PDF)</text>
+    <!-- 3: xử lý tại node 1 -->
+  <rect x="345" y="152" width="150" height="62" rx="6" class="school"/>
+  <text x="420" y="171" class="c s">② băm PDF (SHA-256)</text><text x="420" y="187" class="c s">ký ISSUE bằng khóa A</text><text x="420" y="203" class="c s">kiểm tra luật → mempool</text>
+  <!-- 4: phát giao dịch -->
+  <path d="M420,232 L590,232" class="line" marker-end="url(#arr)"/>
+  <path d="M420,232 C500,232 680,232 760,232" class="line" marker-end="url(#arr)"/>
+  <text x="600" y="225" class="s">③ POST /tx (mọi trường có giao dịch)</text>
+  <!-- 5: trả lời -->
+  <path d="M420,262 L90,262" class="dash" style="stroke:#1c2430" marker-end="url(#arr)"/><text x="160" y="255" class="s">④ "✔ Đã nhận, chờ tới lượt tạo block"</text>
+  <!-- 6: PoA -->
+  <rect x="345" y="282" width="490" height="34" rx="6" class="gw"/>
+  <text x="590" y="304" class="c s">⑤ Mỗi giây, mỗi trường hỏi: tới lượt mình chưa? (block số h → trường thứ h mod 3)</text>
+  <!-- 7: node tới lượt đóng block -->
+  <rect x="685" y="330" width="150" height="46" rx="6" class="school"/>
+  <text x="760" y="349" class="c s">⑥ tới lượt (ví dụ ĐH C):</text><text x="760" y="366" class="c s">gói block, ký block</text>
+  <!-- 8: phát block -->
+  <path d="M760,395 L590,395" class="line" marker-end="url(#arr)"/>
+  <path d="M760,395 C680,395 500,395 420,395" class="line" marker-end="url(#arr)"/>
+  <text x="440" y="388" class="s">⑦ POST /blocks</text>
+  <!-- 9: kiểm tra và nối -->
+  <rect x="345" y="408" width="150" height="46" rx="6" class="box"/><text x="420" y="427" class="c s">⑧ kiểm tra hash, Merkle,</text><text x="420" y="444" class="c s">lượt, chữ ký → nối chain</text>
+  <rect x="515" y="408" width="150" height="46" rx="6" class="box"/><text x="590" y="427" class="c s">⑧ kiểm tra hash, Merkle,</text><text x="590" y="444" class="c s">lượt, chữ ký → nối chain</text>
+  <!-- 10: node chỉ đọc kéo chain -->
+  <path d="M760,484 L920,484" class="dash" marker-end="url(#arrO)"/><text x="772" y="477" class="s">⑨ POST /blocks (đẩy lên VPS)</text>
+  
+  <rect x="845" y="522" width="150" height="46" rx="6" class="reader" style="stroke-dasharray:none"/><text x="920" y="541" class="c s">⑩ kiểm tra block</text><text x="920" y="558" class="c s">→ lưu bản sao</text>
+  <text x="30" y="560" class="s">Chain chỉ lưu hash của PDF và</text><text x="30" y="576" class="s">hash của mã sinh viên — không lưu file.</text>
+</svg>
+
+<!-- HÌNH 4: LUỒNG XÁC MINH -->
+<svg id="h8-luong-xac-minh" width="1000" height="430">
+  <text x="500" y="26" class="t c">Hình 4. Luồng xác minh (đọc) — node nào cũng trả lời được</text>
+  <g transform="translate(20,150)">
+    <rect width="180" height="120" rx="10" class="box"/>
+    <text x="90" y="30" class="b c">Nhà tuyển dụng</text>
+    <text x="90" y="56" class="c s">tải file PDF</text><text x="90" y="74" class="c s">hoặc nhập mã</text><text x="90" y="92" class="c s">văn bằng</text>
+  </g>
+  <text x="110" y="292" class="c s">POST /verify tới node</text><text x="110" y="308" class="c s">đang mở trang</text>
+  <g class="s">
+    <rect x="400" y="55" width="280" height="60" rx="8" class="school"/><text x="410" y="78" class="b">Node 1 · ĐH A</text><text x="410" y="98">localhost:3001</text>
+    <rect x="400" y="135" width="280" height="60" rx="8" class="school"/><text x="410" y="158" class="b">Node 2 · ĐH B</text><text x="410" y="178">localhost:3002</text>
+    <rect x="400" y="215" width="280" height="60" rx="8" class="school"/><text x="410" y="238" class="b">Node 3 · ĐH C</text><text x="410" y="258">localhost:3003</text>
+    <rect x="400" y="295" width="280" height="60" rx="8" class="reader"/><text x="410" y="318" class="b">Node backup</text><text x="410" y="338">localhost:3100, dùng khi các trường tắt</text>
+  </g>
+  <path d="M200,195 L400,85" class="line" marker-end="url(#arr)"/>
+  <path d="M200,205 L400,165" class="line" marker-end="url(#arr)"/>
+  <path d="M200,215 L400,245" class="line" marker-end="url(#arr)"/>
+  <path d="M200,225 L400,325" class="dash" marker-end="url(#arrO)"/>
+  <text x="540" y="385" class="c s">Node nào cũng giữ bản sao đầy đủ của chain</text><text x="540" y="401" class="c s">→ node nào cũng trả lời được</text>
+  <g transform="translate(720,60)">
+    <rect width="260" height="300" rx="10" class="host"/>
+    <text x="130" y="26" class="b c">Mỗi node làm:</text>
+    <text x="16" y="54" class="s">1. Băm PDF bằng SHA-256</text>
+    <text x="16" y="76" class="s">2. Tìm hash trong bản sao chain</text>
+    <rect x="12" y="96" width="236" height="40" rx="6" class="school"/><text x="130" y="121" class="c s">có, chưa thu hồi → ✅ Hợp lệ</text>
+    <rect x="12" y="144" width="236" height="40" rx="6" class="reader" style="stroke-dasharray:none"/><text x="130" y="169" class="c s">có REVOKE → ⚠️ Đã thu hồi</text>
+    <rect x="12" y="192" width="236" height="40" rx="6" class="gw"/><text x="130" y="217" class="c s">còn trong mempool → ⏳ Đang chờ</text>
+    <rect x="12" y="240" width="236" height="40" rx="6" class="bad"/><text x="130" y="265" class="c s">không có → ❌ Không tìm thấy</text>
+  </g>
+</svg>
+
+<!-- HÌNH 9: LUỒNG TỰ BẢO VỆ KHI BỊ SỬA DỮ LIỆU -->
+<svg id="h9-tu-bao-ve" width="1000" height="330">
+  <text x="500" y="26" class="t c">Hình 5. Node bị sửa dữ liệu tự phát hiện và tự khôi phục</text>
+  <g transform="translate(20,60)">
+    <rect width="200" height="110" rx="10" class="school"/>
+    <text x="100" y="26" class="b c">Node 2 bình thường</text>
+    <text x="100" y="52" class="c s">chain hợp lệ (xanh)</text><text x="100" y="72" class="c s">giống Node 1, Node 3</text>
+  </g>
+  <g transform="translate(265,60)">
+    <rect width="200" height="110" rx="10" class="box"/>
+    <text x="100" y="26" class="b c">Kẻ tấn công</text>
+    <text x="100" y="52" class="c s">sửa 1 ký tự docHash</text><text x="100" y="72" class="c s">trong chain.json</text><text x="100" y="92" class="c s">(giây 0)</text>
+  </g>
+  <g transform="translate(510,60)">
+    <rect width="210" height="110" rx="10" class="bad"/>
+    <text x="105" y="26" class="b c">Node 2 phát hiện (đỏ)</text>
+    <text x="105" y="50" class="c s">~1 giây: thấy file đổi,</text><text x="105" y="68" class="c s">quét lại chain → Merkle root</text><text x="105" y="86" class="c s">không khớp → KHÔNG hợp lệ,</text><text x="105" y="104" class="c s">ngừng tạo block</text>
+  </g>
+  <g transform="translate(765,60)">
+    <rect width="215" height="110" rx="10" class="school"/>
+    <text x="107" y="26" class="b c">Tự khôi phục (xanh)</text>
+    <text x="107" y="50" class="c s">~6–10 giây: GET /chain</text><text x="107" y="68" class="c s">của Node 1 / Node 3,</text><text x="107" y="86" class="c s">chain hợp lệ → ghi đè file</text>
+  </g>
+  <path d="M220,115 L265,115" class="line" marker-end="url(#arr)"/>
+  <path d="M465,115 L510,115" class="red" marker-end="url(#arrR)"/>
+  <path d="M720,115 L765,115" class="sync" marker-end="url(#arrG)"/>
+  <g transform="translate(20,205)">
+    <rect width="960" height="105" rx="10" class="host"/>
+    <text x="20" y="28" class="b">Cùng cơ chế cho node tắt rồi bật lại:</text>
+    <text x="20" y="54" class="s">khởi động → đọc chain.json, kiểm tra lại toàn bộ → hỏi GET /chain của các node khác → chain dài hơn và hợp lệ thì lấy về (kể cả giao dịch đang chờ).</text>
+    <text x="20" y="78" class="s">Luật chọn chain: chỉ nhận chain HỢP LỆ từ genesis; chain dài hơn thắng; chain của mình hỏng thì nhận chain hợp lệ cùng độ dài.</text>
+    <text x="20" y="96" class="s">Vì vậy kẻ tấn công không thể "ép" mạng nhận chain giả: chain giả không qua được bước kiểm tra chữ ký và hash.</text>
+  </g>
+</svg>
+
+<!-- HÌNH 10: BIỂU ĐỒ HOẠT ĐỘNG NGOÀI ĐỜI (làn bơi) -->
+<svg id="h10-hoat-dong" width="1220" height="1200" style="font-size:13px">
+  <style>
+    #h10-hoat-dong .a { fill: #fff; stroke: #1c2430; stroke-width: 1.5; }
+    #h10-hoat-dong .lane0 { fill: #f7f9fb; } #h10-hoat-dong .lane1 { fill: #ffffff; }
+    #h10-hoat-dong .ac { font-size: 13px; text-anchor: middle; }
+    #h10-hoat-dong .lab { font-size: 12px; fill: #4a5563; }
+  </style>
+  <text x="610" y="26" class="t c">Hình 6. Biểu đồ hoạt động ngoài đời: từ lúc cấp quyền đến lúc nhà tuyển dụng xác minh</text>
+  <!-- làn -->
+  <rect x="20" y="45" width="200" height="1140" class="lane0"/><rect x="220" y="45" width="220" height="1140" class="lane1"/>
+  <rect x="440" y="45" width="200" height="1140" class="lane0"/><rect x="640" y="45" width="300" height="1140" class="lane1"/>
+  <rect x="940" y="45" width="260" height="1140" class="lane0"/>
+  <g stroke="#b8c2ce"><line x1="220" y1="45" x2="220" y2="1185"/><line x1="440" y1="45" x2="440" y2="1185"/><line x1="640" y1="45" x2="640" y2="1185"/><line x1="940" y1="45" x2="940" y2="1185"/>
+    <rect x="20" y="45" width="1180" height="1140" fill="none"/><line x1="20" y1="85" x2="1200" y2="85"/></g>
+  <g class="b c"><text x="120" y="71">Bộ GD&amp;ĐT</text><text x="330" y="71">Trường đại học</text><text x="540" y="71">Sinh viên</text><text x="790" y="71">Nhà tuyển dụng</text><text x="1070" y="71">Mạng blockchain (các trường)</text></g>
+
+  <!-- Bộ cấp quyền -->
+  <circle cx="120" cy="112" r="9" fill="#1c2430"/>
+  <path d="M120,121 L120,143" class="line" marker-end="url(#arr)"/>
+  <rect x="30" y="143" width="180" height="54" rx="14" class="a"/><text x="120" y="166" class="ac">Xét duyệt trường</text><text x="120" y="184" class="ac">đủ điều kiện đào tạo</text>
+  <path d="M120,197 L120,218" class="line" marker-end="url(#arr)"/>
+  <rect x="30" y="218" width="180" height="54" rx="14" class="a"/><text x="120" y="241" class="ac">Ký cấp quyền phát hành</text><text x="120" y="259" class="ac">(ADD_ISSUER, khóa Admin)</text>
+  <path d="M210,245 L950,245" class="line" marker-end="url(#arr)"/>
+  <rect x="950" y="218" width="240" height="54" rx="14" class="school"/><text x="1070" y="241" class="ac">Kiểm chữ ký Admin →</text><text x="1070" y="259" class="ac">ghi quyền của trường lên chain</text>
+
+  <!-- Trường cấp bằng -->
+  <circle cx="330" cy="292" r="9" fill="#1c2430"/>
+  <text x="345" y="290" class="lab">sinh viên tốt nghiệp</text>
+  <path d="M330,301 L330,318" class="line" marker-end="url(#arr)"/>
+  <rect x="240" y="318" width="180" height="54" rx="14" class="a"/><text x="330" y="341" class="ac">Lập văn bằng PDF</text><text x="330" y="359" class="ac">(in sẵn mã VB2026-001)</text>
+  <path d="M330,372 L330,393" class="line" marker-end="url(#arr)"/>
+  <rect x="240" y="393" width="180" height="54" rx="14" class="a"/><text x="330" y="416" class="ac">Tải PDF lên: băm SHA-256,</text><text x="330" y="434" class="ac">ký bằng khóa trường</text>
+  <path d="M420,420 L955,420" class="line" marker-end="url(#arr)"/>
+  <polygon points="1030,382 1105,420 1030,458 955,420" class="a"/><text x="1030" y="416" class="ac" style="font-size:12px">Trường có quyền?</text><text x="1030" y="431" class="ac" style="font-size:12px">Mã chưa trùng?</text>
+  <path d="M1105,420 L1126,420" class="red" marker-end="url(#arrR)"/>
+  <rect x="1128" y="398" width="66" height="44" rx="8" class="bad"/><text x="1161" y="417" class="ac" style="font-size:12px">Từ chối</text><text x="1161" y="433" class="ac" style="font-size:11px">(trường ma)</text>
+  <text x="1092" y="394" class="lab">Không</text>
+  <path d="M1030,458 L1030,478" class="line" marker-end="url(#arr)"/><text x="1036" y="472" class="lab">Có</text>
+  <rect x="950" y="478" width="240" height="54" rx="14" class="school"/><text x="1070" y="501" class="ac">Trường tới lượt đóng block;</text><text x="1070" y="519" class="ac">mọi trường lưu một bản sao</text>
+  <path d="M950,505 L330,505 L330,553" class="line" marker-end="url(#arr)"/>
+  <rect x="240" y="553" width="180" height="44" rx="14" class="a"/><text x="330" y="580" class="ac">Gửi file PDF gốc cho sinh viên</text>
+
+  <!-- Sinh viên -->
+  <path d="M420,575 L540,575 L540,618" class="line" marker-end="url(#arr)"/>
+  <rect x="455" y="618" width="170" height="54" rx="14" class="a"/><text x="540" y="641" class="ac">Tra cứu bằng mã SV,</text><text x="540" y="659" class="ac">tạo link hoặc QR</text>
+  <path d="M540,672 L540,708" class="line" marker-end="url(#arr)"/>
+  <rect x="455" y="708" width="170" height="54" rx="14" class="a"/><text x="540" y="731" class="ac">Nộp hồ sơ xin việc:</text><text x="540" y="749" class="ac">file PDF + link/QR</text>
+
+  <!-- Nhà tuyển dụng -->
+  <path d="M625,735 L790,735 L790,773" class="line" marker-end="url(#arr)"/>
+  <rect x="665" y="773" width="250" height="54" rx="14" class="a"/><text x="790" y="796" class="ac">Nhận hồ sơ, tải PDF lên</text><text x="790" y="814" class="ac">trang xác minh (không gọi trường)</text>
+  <path d="M915,800 L950,800" class="line" marker-end="url(#arr)"/>
+  <rect x="950" y="773" width="240" height="54" rx="14" class="gw"/><text x="1070" y="796" class="ac">Node bất kỳ: băm PDF,</text><text x="1070" y="814" class="ac">tìm hash trên chain</text>
+  <path d="M1000,827 L1000,840 L790,840 L790,850" class="line" marker-end="url(#arr)"/>
+  <polygon points="790,850 855,880 790,910 725,880" class="a"/><text x="790" y="885" class="ac" style="font-size:12px">Kết quả?</text>
+  <path d="M725,880 L690,880 L690,941" class="line" marker-end="url(#arr)"/>
+  <path d="M790,910 L790,941" class="line" marker-end="url(#arr)"/>
+  <path d="M855,880 L890,880 L890,941" class="line" marker-end="url(#arr)"/>
+  <rect x="646" y="941" width="88" height="48" rx="8" class="school"/><text x="690" y="961" class="ac" style="font-size:12px">✅ Hợp lệ</text><text x="690" y="978" class="ac" style="font-size:11px">nhận hồ sơ</text>
+  <rect x="746" y="941" width="88" height="48" rx="8" class="reader" style="stroke-dasharray:none"/><text x="790" y="961" class="ac" style="font-size:12px">⚠️ Thu hồi</text><text x="790" y="978" class="ac" style="font-size:11px">loại hồ sơ</text>
+  <rect x="846" y="941" width="88" height="48" rx="8" class="bad"/><text x="890" y="961" class="ac" style="font-size:12px">❌ Không thấy</text><text x="890" y="978" class="ac" style="font-size:11px">bằng giả/sửa</text>
+  <path d="M690,989 L690,1010 L790,1010 L790,1024" class="line"/><path d="M890,989 L890,1010 L790,1010" class="line"/>
+  <path d="M790,989 L790,1024" class="line" marker-end="url(#arr)"/>
+  <circle cx="790" cy="1036" r="11" fill="#fff" stroke="#1c2430" stroke-width="2"/><circle cx="790" cy="1036" r="6" fill="#1c2430"/>
+
+  <!-- Thu hồi -->
+  <text x="240" y="1082" class="lab">Bất kỳ lúc nào sau khi cấp:</text>
+  <circle cx="330" cy="1098" r="7" fill="#1c2430"/>
+  <path d="M330,1105 L330,1118" class="line" marker-end="url(#arr)"/>
+  <rect x="240" y="1118" width="180" height="54" rx="14" class="a"/><text x="330" y="1141" class="ac">Gửi yêu cầu thu hồi</text><text x="330" y="1159" class="ac">+ lý do + bằng chứng</text>
+  <path d="M420,1145 L950,1145" class="line" marker-end="url(#arr)"/>
+  <rect x="950" y="1118" width="240" height="54" rx="14" class="reader" style="stroke-dasharray:none"/><text x="1070" y="1141" class="ac">Trường khác xem bằng chứng,</text><text x="1070" y="1159" class="ac">chấp nhận → đủ 2/3: thu hồi</text>
+  <path d="M1130,1118 L1130,827" class="dash" marker-end="url(#arrO)"/>
+  <text x="1138" y="960" class="lab">lần xác</text><text x="1138" y="976" class="lab">minh sau</text><text x="1138" y="992" class="lab">→ ⚠️</text>
+</svg>
+
+</body>
+</html>
